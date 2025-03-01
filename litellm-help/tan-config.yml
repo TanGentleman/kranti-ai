@@ -1,0 +1,70 @@
+model_list:
+  - model_name: gemini-flash-1.5-8b
+    litellm_params:
+      model: openrouter/google/gemini-flash-1.5-8b
+      api_key: "os.environ/OPENROUTER_API_KEY"
+  - model_name: claude-3.7-sonnet
+    litellm_params:
+      model: openrouter/anthropic/claude-3.7-sonnet
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      api_base: https://openrouter.ai/api/v1
+    model_info:
+      supports_function_calling: true
+      supports_vision: true
+  - model_name: gpt-4o
+    litellm_params:
+      model: openrouter/openai/gpt-4o
+      api_key: "os.environ/OPENROUTER_API_KEY"
+    model_info:
+      supports_function_calling: true
+      supports_vision: true
+  - model_name: sambanova-llama-90b-vision
+    litellm_params:
+      model: sambanova/Llama-3.2-90B-Vision-Instruct
+      api_key: "os.environ/SAMBANOVA_API_KEY"
+    model_info:
+      supports_vision: true
+  - model_name: sambanova-llama-405b
+    litellm_params:
+      model: sambanova/Meta-Llama-3.1-405B-Instruct
+      api_key: "os.environ/SAMBANOVA_API_KEY"
+  - model_name: sambanova-llama-70b
+    litellm_params:
+      model: sambanova/Llama-3.3-70B-Instruct
+      api_key: "os.environ/SAMBANOVA_API_KEY"
+  - model_name: sambanova-qwen-72b
+    litellm_params:
+      model: sambanova/Qwen2.5-72B-Instruct
+      api_key: "os.environ/SAMBANOVA_API_KEY"
+  - model_name: gemini-flash-1.5
+    litellm_params:
+      model: openrouter/google/gemini-flash-1.5
+      api_key: "os.environ/OPENROUTER_API_KEY"
+  - model_name: "open/*"
+    litellm_params:
+      model: "openrouter/*"
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: "sambanova/*" 
+    litellm_params:
+      model: "sambanova/*"
+      api_key: os.environ/SAMBANOVA_API_KEY
+  - model_name: "together/*"
+    litellm_params:
+      model: "together_ai/*"
+      api_key: os.environ/TOGETHER_API_KEY
+
+litellm_settings:
+  drop_params: True
+  num_retries: 2
+  request_timeout: 300
+  telemetry: False
+  fallbacks: [{"*": ["gemini-flash-1.5"]}]
+  context_window_fallbacks: [{"gemini-flash-1.5"}]
+  redact_user_api_key_info: True
+  set_verbose: False
+  json_logs: true         # Get debug logs in json format
+  success_callback: ["langfuse"] # OPTIONAL - if you want to start sending LLM Logs to Langfuse. Make sure to set `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` in your env
+
+# general_settings:
+#   disable_spend_logs: True    # Disable writing spend logs to DB
+#   disable_error_logs: True    # Disable writing error logs to DB
