@@ -40,6 +40,10 @@ model_list:
     litellm_params:
       model: openrouter/google/gemini-flash-1.5
       api_key: "os.environ/OPENROUTER_API_KEY"
+  - model_name: deepseek-v3
+    litellm_params:
+      model: together_ai/deepseek-ai/DeepSeek-V3
+      api_key: "os.environ/TOGETHER_API_KEY"
   - model_name: "open/*"
     litellm_params:
       model: "openrouter/*"
@@ -52,10 +56,14 @@ model_list:
     litellm_params:
       model: "together_ai/*"
       api_key: os.environ/TOGETHER_API_KEY
+  - model_name: m2-bert-80M-8k
+    litellm_params:
+      model: together_ai/togethercomputer/m2-bert-80M-8k-retrieval
+      api_key: "os.environ/TOGETHER_API_KEY"
 
 litellm_settings:
   drop_params: True
-  num_retries: 2
+  num_retries: 3
   request_timeout: 300
   telemetry: False
   fallbacks: [{"*": ["gemini-flash-1.5"]}]
