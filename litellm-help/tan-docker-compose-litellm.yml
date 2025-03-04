@@ -1,0 +1,37 @@
+services:
+  litellm:
+    build:
+      context: .
+      args:
+        target: runtime
+    image: ghcr.io/berriai/litellm:main-latest
+    restart: unless-stopped
+    #########################################
+    # Uncomment these lines to start proxy with a config.yaml file ##
+    volumes:
+     - ~/Documents/GitHub/kranti-ai/litellm-help/tan-config.yml:/app/config.yml
+    command:
+     - "--config=/app/config.yml"
+    ##############################################
+    ports:
+      - "4000:4000" # Map the container port to the host, change the host port if necessary
+    environment:
+        DATABASE_URL: "postgresql://llmproxy:tan-pass@db:5432/litellm"
+        STORE_MODEL_IN_DB: "True" # allows adding models to proxy via UI
+    env_file:
+      - .env # Load local .env file
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: litellm
+      POSTGRES_USER: llmproxy
+      POSTGRES_PASSWORD: tan-pass
+    ports:
+      - "5455:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d litellm -U llmproxy"]
+      interval: 1s
+      timeout: 5s
+      retries: 3
