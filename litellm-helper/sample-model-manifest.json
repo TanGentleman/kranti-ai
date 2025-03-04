@@ -1,0 +1,122 @@
+[
+    {
+        "id": "claude-3.7-sonnet",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "claude-3.7-sonnet",
+        "openai": {
+            "id": "claude-3.7-sonnet",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "gemini-flash-1.5-8b",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "gemini-flash-1.5-8b",
+        "openai": {
+            "id": "gemini-flash-1.5-8b",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "sambanova-qwen-72b",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "sambanova-qwen-72b",
+        "openai": {
+            "id": "sambanova-qwen-72b",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "sambanova-llama-405b",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "sambanova-llama-405b",
+        "openai": {
+            "id": "sambanova-llama-405b",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "sambanova-llama-90b-vision",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "sambanova-llama-90b-vision",
+        "openai": {
+            "id": "sambanova-llama-90b-vision",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "gemini-flash-1.5",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "gemini-flash-1.5",
+        "openai": {
+            "id": "gemini-flash-1.5",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "gpt-4o",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "gpt-4o",
+        "openai": {
+            "id": "gpt-4o",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    },
+    {
+        "id": "sambanova-llama-70b",
+        "object": "model",
+        "created": 1677610602,
+        "owned_by": "openai",
+        "name": "sambanova-llama-70b",
+        "openai": {
+            "id": "sambanova-llama-70b",
+            "object": "model",
+            "created": 1677610602,
+            "owned_by": "openai"
+        },
+        "urlIdx": 0,
+        "is_active": true
+    }
+]
