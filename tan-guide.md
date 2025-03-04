@@ -1,13 +1,13 @@
 Docker Compose for Litellm:
 ```
-cd litellm
+cd litellm-helper
 docker compose -f tan-docker-compose-litellm.yml up
 ```
 
 Docker Compose for Langfuse:
 ```
-cd langfuse
-docker compose -f tan-docker-compose-langfuse.yml up
+cd langfuse-helper
+docker compose -f tan-docker-compose-langfuse.yml -p dev-langfuse up
 ```
 
 Docker Run for Open-WebUI:
@@ -42,7 +42,8 @@ export CONTAINER_NAME="dev-open-webui"
 export PORT=8002
 ```
 
-# TODO: Add Kokoro container (see https://github.com/eduardolat/kokoro-web or similar)
+# TODO: Support Kokoro as Docker Container
+- [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI)
 
 # Helpful links:
 - https://docs.openwebui.com/getting-started/env-configuration/
