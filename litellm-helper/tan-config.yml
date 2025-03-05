@@ -1,65 +1,62 @@
 model_list:
+  - model_name: DeepSeek-R1-Distill-Llama-70B
+    litellm_params:
+      model: together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B
+  - model_name: sambanova-R1-Distill-Llama
+    litellm_params:
+      model: sambanova/DeepSeek-R1-Distill-Llama-70B
+  - model_name: gemini-2.0-flash
+    litellm_params:
+      model: openrouter/google/gemini-2.0-flash-lite-001
   - model_name: gemini-flash-1.5-8b
     litellm_params:
       model: openrouter/google/gemini-flash-1.5-8b
-      api_key: "os.environ/OPENROUTER_API_KEY"
   - model_name: claude-3.7-sonnet
     litellm_params:
       model: openrouter/anthropic/claude-3.7-sonnet
-      api_key: "os.environ/OPENROUTER_API_KEY"
       api_base: https://openrouter.ai/api/v1
     model_info:
       supports_function_calling: true
       supports_vision: true
+  
+  - model_name: Mistral-Saba
+    litellm_params:
+      model: openrouter/mistralai/mistral-saba
   - model_name: gpt-4o
     litellm_params:
       model: openrouter/openai/gpt-4o
-      api_key: "os.environ/OPENROUTER_API_KEY"
     model_info:
       supports_function_calling: true
       supports_vision: true
   - model_name: sambanova-llama-90b-vision
     litellm_params:
       model: sambanova/Llama-3.2-90B-Vision-Instruct
-      api_key: "os.environ/SAMBANOVA_API_KEY"
     model_info:
       supports_vision: true
   - model_name: sambanova-llama-405b
     litellm_params:
       model: sambanova/Meta-Llama-3.1-405B-Instruct
-      api_key: "os.environ/SAMBANOVA_API_KEY"
   - model_name: sambanova-llama-70b
     litellm_params:
       model: sambanova/Llama-3.3-70B-Instruct
-      api_key: "os.environ/SAMBANOVA_API_KEY"
   - model_name: sambanova-qwen-72b
     litellm_params:
       model: sambanova/Qwen2.5-72B-Instruct
-      api_key: "os.environ/SAMBANOVA_API_KEY"
-  - model_name: gemini-flash-1.5
-    litellm_params:
-      model: openrouter/google/gemini-flash-1.5
-      api_key: "os.environ/OPENROUTER_API_KEY"
   - model_name: deepseek-v3
     litellm_params:
       model: together_ai/deepseek-ai/DeepSeek-V3
-      api_key: "os.environ/TOGETHER_API_KEY"
   - model_name: "open/*"
     litellm_params:
       model: "openrouter/*"
-      api_key: os.environ/OPENROUTER_API_KEY
   - model_name: "sambanova/*" 
     litellm_params:
       model: "sambanova/*"
-      api_key: os.environ/SAMBANOVA_API_KEY
   - model_name: "together/*"
     litellm_params:
       model: "together_ai/*"
-      api_key: os.environ/TOGETHER_API_KEY
   - model_name: m2-bert-80M-8k
     litellm_params:
       model: together_ai/togethercomputer/m2-bert-80M-8k-retrieval
-      api_key: "os.environ/TOGETHER_API_KEY"
 
 litellm_settings:
   drop_params: True
@@ -73,6 +70,8 @@ litellm_settings:
   json_logs: true         # Get debug logs in json format
   success_callback: ["langfuse"] # OPTIONAL - if you want to start sending LLM Logs to Langfuse. Make sure to set `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` in your env
 
-# general_settings:
-#   disable_spend_logs: True    # Disable writing spend logs to DB
-#   disable_error_logs: True    # Disable writing error logs to DB
+general_settings: 
+  alerting: ["slack"] # [OPTIONAL] If you want Slack Alerts for Hanging LLM requests, Slow llm responses, Budget Alerts. Make sure to set `SLACK_WEBHOOK_URL` in your env
+  background_health_checks: false
+  # disable_spend_logs: True    # Disable writing spend logs to DB
+  # disable_error_logs: True    # Disable writing error logs to DB
