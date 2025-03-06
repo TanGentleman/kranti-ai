@@ -1,4 +1,10 @@
 model_list:
+  - model_name: qwq-32b
+    litellm_params:
+      model: openrouter/qwen/qwq-32b:free
+    model_info:
+      supports_function_calling: true
+
   - model_name: DeepSeek-R1-Distill-Llama-70B
     litellm_params:
       model: together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B
@@ -38,7 +44,7 @@ model_list:
       model: sambanova/Meta-Llama-3.1-405B-Instruct
   - model_name: sambanova-llama-70b
     litellm_params:
-      model: sambanova/Llama-3.3-70B-Instruct
+      model: sambanova/Meta-Llama-3.3-70B-Instruct
   - model_name: sambanova-qwen-72b
     litellm_params:
       model: sambanova/Qwen2.5-72B-Instruct
@@ -63,8 +69,8 @@ litellm_settings:
   num_retries: 3
   request_timeout: 300
   telemetry: False
-  fallbacks: [{"*": ["gemini-flash-1.5"]}]
-  context_window_fallbacks: [{"gemini-flash-1.5"}]
+  fallbacks: [{"*": ["gemini-2.0-flash"]}]
+  context_window_fallbacks: [{"gemini-2.0-flash"}]
   redact_user_api_key_info: True
   set_verbose: False
   json_logs: true         # Get debug logs in json format
