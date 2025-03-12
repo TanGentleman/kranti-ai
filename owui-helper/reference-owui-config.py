@@ -1,3 +1,4 @@
+### NOTE: This is a modified version of: https://github.com/open-webui/open-webui/blob/main/backend/open_webui/config.py
 import json
 import logging
 import os
