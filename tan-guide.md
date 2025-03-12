@@ -1,3 +1,24 @@
+Running Kranti-AI:
+
+1. Run App Shortcut (or terminal command below)
+```
+docker start \
+dev-owui-helper \
+litellm-helper-litellm-1 \
+litellm-helper-db-1 \
+langfuse-helper-redis-1 \
+langfuse-helper-minio-1 \
+langfuse-helper-clickhouse-1 \
+langfuse-helper-postgres-1 \
+langfuse-helper-langfuse-web-1 \
+langfuse-helper-langfuse-worker-1
+```
+
+2. Open http://localhost:8002
+
+
+Installation:
+
 Docker Compose for Litellm:
 ```
 cd litellm-helper
