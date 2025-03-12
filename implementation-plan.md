@@ -1,5 +1,9 @@
 ### High-Level Components and User Interactions
 
+For Backend Development:
+- https://stack.convex.dev/convex-mcp-server
+- https://docs.vectara.com/docs
+
 1. **Open-WebUI**:
    - **Frontend**: Provides the user interface for interacting with the application, including the chat interface and custom workflows.
    -Backend Integration**: Handles the integration with other components, such as the custom server and LiteLLM proxy server.
