@@ -1,4 +1,9 @@
 model_list:
+  - model_name: qwen2.5-0.5b-mlx
+    litellm_params:
+      model: lm_studio/qwen2.5-0.5b-instruct-mlx
+      api_base: http://host.docker.internal:1234/v1
+      api_key: not-needed
 
   - model_name: qwq-32b
     litellm_params:
@@ -65,7 +70,7 @@ model_list:
     litellm_params:
       model: "lm_studio/*"
       api_base: http://host.docker.internal:1234/v1
-      api_key: sk-sample-lmstudio
+      api_key: not-needed
 
   - model_name: m2-bert-80M-8k
     litellm_params:
