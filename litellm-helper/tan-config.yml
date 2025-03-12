@@ -1,4 +1,9 @@
 model_list:
+  - model_name: "local-qwen-7b"
+    litellm_params:
+      model: "openai/qwen2.5-7b-instruct"
+      api_base: http://host.docker.internal:1234/v1
+
   - model_name: qwq-32b
     litellm_params:
       model: openrouter/qwen/qwq-32b:free
@@ -60,6 +65,11 @@ model_list:
   - model_name: "together/*"
     litellm_params:
       model: "together_ai/*"
+  - model_name: "lmstudio/*"
+    litellm_params:
+      model: "openai/*"
+      api_base: http://host.docker.internal:1234/v1
+
   - model_name: m2-bert-80M-8k
     litellm_params:
       model: together_ai/togethercomputer/m2-bert-80M-8k-retrieval
