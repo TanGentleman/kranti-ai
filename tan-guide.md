@@ -11,7 +11,8 @@ langfuse-helper-minio-1 \
 langfuse-helper-clickhouse-1 \
 langfuse-helper-postgres-1 \
 langfuse-helper-langfuse-web-1 \
-langfuse-helper-langfuse-worker-1
+langfuse-helper-langfuse-worker-1 \
+kokoro-helper \
 ```
 
 2. Open http://localhost:8002
@@ -34,31 +35,40 @@ docker compose -f tan-docker-compose-langfuse.yml -p dev-langfuse up
 Docker Run for Open-WebUI:
 ```
 export SENSITIVE_KEY="MASTER-KEY-HERE"
-export VOLUME_NAME="mar5-open-webui"
+export VOLUME_NAME="mar12-open-webui"
 export CONTAINER_NAME="owui-helper"
 export PORT=8001
 docker run -d -p $PORT:8080 \
 -e OFFLINE_MODE=True \
 -e WEBUI_NAME=Kranti \
 -e WEBUI_AUTH=False \
+-e OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1 \
 -e OPENAI_API_KEY=$SENSITIVE_KEY \
 -e TASK_MODEL_EXTERNAL="gemini-2.0-flash" \
--e DEFAULT_MODELS="sambanova-R1-Distill-Llama" \
+-e DEFAULT_MODELS="deepseek-v3" \
 -e ENABLE_OLLAMA_API=False \
 -e ENABLE_COMMUNITY_SHARING=False \
 -e ENABLE_MESSAGE_RATING=False \
 -e ENABLE_TAGS_GENERATION=False \
 -e RAG_EMBEDDING_ENGINE=openai \
 -e RAG_EMBEDDING_MODEL=m2-bert-80M-8k \
--e RAG_OPENAI_API_KEY=$SENSITIVE_KEY \
 -e AUDIO_STT_ENGINE=openai \
--e OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1 \
+-e AUDIO_TTS_ENGINE=openai \
+-e AUDIO_TTS_OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1 \
+-e AUDIO_TTS_OPENAI_API_KEY=$SENSITIVE_KEY \
+-e AUDIO_TTS_MODEL=kokoro-tts \
+-e AUDIO_TTS_VOICE=af_bella \
 -v $VOLUME_NAME:/app/backend/data --name $CONTAINER_NAME ghcr.io/open-webui/open-webui:main
 ```
 
 
-# TODO: Support Kokoro as Docker Container
-- [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI)
+# Kokoro as Docker Container
+```
+docker run -p 8880:8880 --name kokoro-helper ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2
+```
+
+In progress:
+- 
 
 # Helpful links:
 - https://docs.openwebui.com/getting-started/env-configuration/
