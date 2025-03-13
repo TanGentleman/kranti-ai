@@ -76,6 +76,12 @@ model_list:
     litellm_params:
       model: together_ai/togethercomputer/m2-bert-80M-8k-retrieval
 
+  - model_name: kokoro-tts
+    litellm_params:
+      model: openai/tts-1
+      api_base: http://host.docker.internal:8880/v1
+      api_key: sk-not-needed
+
 litellm_settings:
   drop_params: True
   num_retries: 3
