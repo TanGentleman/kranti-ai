@@ -1,5 +1,7 @@
+# Run this using docker compose -f tan-docker-compose-litellm.yml up
 services:
   litellm:
+    container_name: cookies-litellm-proxy
     build:
       context: .
       args:
@@ -19,9 +21,11 @@ services:
         DATABASE_URL: "postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}"
         STORE_MODEL_IN_DB: "True" # allows adding models to proxy via UI
     env_file:
-      - .env # Load local .env file
+    # Changed the env file to .env-shared
+      - .env.shared
 
   db:
+    container_name: cookies-litellm-db
     image: postgres
     restart: no
     environment:
@@ -29,7 +33,7 @@ services:
       POSTGRES_USER: "${DB_USER}"
       POSTGRES_PASSWORD: "${DB_PASSWORD}"
     ports:
-      - "5455:5432"
+      - "${DB_PORT:-5455}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d ${DB_NAME} -U ${DB_USER}"]
       interval: 1s

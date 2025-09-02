@@ -2,6 +2,7 @@
 # We recommend to restrict inbound traffic on the host to langfuse-web and minio only.
 # All other components should be bound to localhost (127.0.0.1) to only accept connections from the local machine.
 # External connections from other machines will not be able to reach these services directly.
+# Run this using docker compose -f tan-docker-compose-langfuse.yml up
 services:
   langfuse-worker:
     image: langfuse/langfuse-worker:3
@@ -16,7 +17,7 @@ services:
       clickhouse:
         condition: service_healthy
     ports:
-      - "3031:3030"
+      - "8010:3030"
     environment: &langfuse-worker-env
       # Database Configuration
       DATABASE_URL: ${DATABASE_URL} # CHANGEME
