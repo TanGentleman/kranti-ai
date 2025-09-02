@@ -1,22 +1,36 @@
 model_list:
-  - model_name: qwen2.5-0.5b-mlx
+  - model_name: gemini-2.5-pro-exp
     litellm_params:
-      model: lm_studio/qwen2.5-0.5b-instruct-mlx
+      model: openrouter/google/gemini-2.5-pro
+    model_info:
+      supports_function_calling: true
+      supports_vision: true
+
+  - model_name: sambanova-DeepSeek-V3-0324
+    litellm_params:
+      model: sambanova/DeepSeek-V3-0324
+
+  - model_name: deepseek-r1
+    litellm_params:
+      model: together_ai/deepseek-ai/DeepSeek-R1
+
+
+  - model_name: qwen3-0.6b-mlx
+    litellm_params:
+      model: lm_studio/qwen3-0.6b-dwq-05092025
+      api_base: http://host.docker.internal:1234/v1
+      api_key: not-needed
+  - model_name: qwen2.5-7b-mlx
+    litellm_params:
+      model: lm_studio/qwen2.5-7b-instruct
+      api_base: http://host.docker.internal:1234/v1
+      api_key: not-needed
+  - model_name: gemma-3-4b-4bit
+    litellm_params:
+      model: lm_studio/gemma-3-4b-it
       api_base: http://host.docker.internal:1234/v1
       api_key: not-needed
 
-  - model_name: qwq-32b
-    litellm_params:
-      model: openrouter/qwen/qwq-32b:free
-    model_info:
-      supports_function_calling: true
-
-  - model_name: DeepSeek-R1-Distill-Llama-70B
-    litellm_params:
-      model: together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B
-  - model_name: sambanova-R1-Distill-Llama
-    litellm_params:
-      model: sambanova/DeepSeek-R1-Distill-Llama-70B
   - model_name: gemini-2.0-flash
     litellm_params:
       model: openrouter/google/gemini-2.0-flash-lite-001
@@ -57,15 +71,47 @@ model_list:
   - model_name: deepseek-v3
     litellm_params:
       model: together_ai/deepseek-ai/DeepSeek-V3
-  - model_name: "open/*"
+  - model_name: deepseek-chat-v3
+    litellm_params:
+      model: openrouter/deepseek/deepseek-chat-v3-0324:free
+  - model_name: mistral-medium-3.1
+    litellm_params:
+      model: openrouter/mistralai/mistral-medium-3.1
+  
+  - model_name: nebius-bge-gemma2-embedding
+    litellm_params:
+      model: nebius/BAAI/bge-multilingual-gemma2
+      # embedding has 3584 dimensions
+  
+  # - model_name: openai/*
+  #   litellm_params:
+  #     model: openai/*
+  
+  - model_name: "nebius/*"
+    litellm_params:
+      model: "nebius/*"
+      # api_key: os.environ("NEBIUS_API_KEY")
+  - model_name: nebius-qwen-4b
+    litellm_params:
+      model: nebius/Qwen/Qwen3-4B-fast
+      # api_key: os.environ/NEBIUS_API_KEY
+  - model_name: nebius-r1
+    litellm_params:
+      model: nebius/deepseek-ai/DeepSeek-R1-0528
+      # api_key: os.environ/NEBIUS_API_KEY
+  - model_name: nebius-qwen-235B
+    litellm_params:
+      model: nebius/Qwen/Qwen3-235B-A22B
+      # api_key: os.environ/NEBIUS_API_KEY
+
+  - model_name: "openrouter/*"
     litellm_params:
       model: "openrouter/*"
   - model_name: "sambanova/*" 
     litellm_params:
       model: "sambanova/*"
-  - model_name: "together/*"
-    litellm_params:
-      model: "together_ai/*"
+
+      model: "together/*"
   - model_name: "lmstudio/*"
     litellm_params:
       model: "lm_studio/*"
@@ -81,13 +127,12 @@ model_list:
       model: openai/tts-1
       api_base: http://host.docker.internal:8880/v1
       api_key: sk-not-needed
-
 litellm_settings:
   drop_params: True
   num_retries: 3
   request_timeout: 300
   telemetry: False
-  fallbacks: [{"*": ["gemini-2.0-flash"]}]
+  fallbacks: [{"*": ["Mistral-Saba"]}]
   context_window_fallbacks: [{"gemini-2.0-flash"}]
   redact_user_api_key_info: True
   set_verbose: False
